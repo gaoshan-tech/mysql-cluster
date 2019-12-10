@@ -55,8 +55,7 @@ start_slave_stmt="CHANGE MASTER TO
         MASTER_HOST='$(docker-ip $master_container)',
         MASTER_USER='$mysql_user',
         MASTER_PASSWORD='$mysql_password',
-        MASTER_LOG_FILE='$CURRENT_LOG',
-        MASTER_LOG_POS=$CURRENT_POS;"
+        master_auto_position=1;"
 start_slave_cmd='export MYSQL_PWD='$root_password'; mysql -u root -e "'
 start_slave_cmd+="$start_slave_stmt"
 start_slave_cmd+='START SLAVE;"'

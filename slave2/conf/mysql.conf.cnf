@@ -19,5 +19,7 @@ log_bin = /var/log/mysql/mysql-bin.log
 # 中继日志：存储所有主库TP过来的binlog事件主库binlog：记录主库发生过的修改事件
 relay-log = /var/log/mysql/mysql-relay-bin.log
 
-# 要同步的库
-binlog_do_db = mydb
+gtid-mode = on
+enforce-gtid-consistency = on
+replicate-wild-ignore-table = mysql.%
+log-slave-updates=ON

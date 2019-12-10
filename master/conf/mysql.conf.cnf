@@ -16,8 +16,10 @@ server-id = 11
 # mysql日志
 log_bin = /var/log/mysql/mysql-bin.log
 
-# binlog日志格式，mysql默认采用statement，建议使用 mixed(是statement和row模式的结合)
-binlog_format = mixed
+# 启用GTID模式同步
+gtid-mode=ON
 
-# 要同步的库
-binlog_do_db = mydb
+# 强制gtid一致
+enforce-gtid-consistency = on
+replicate-wild-ignore-table = mysql.%
+log-slave-updates=ON
